@@ -33,15 +33,17 @@ body {
   background-image: url("bg.png");
   margin: 0 auto;
 }
+.fixed_container {
+  width: 1200px;
+  margin: 0 auto;
+}
 header {
   height: 90px;
   z-index: 1;
   background-color: #8cc34b;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
-.header_inner {
-  margin: 0 auto;
-  width: 1200px;
+header .fixed_container {
   height: 100%;
   display: flex;
   align-items: center;
@@ -67,6 +69,10 @@ header {
   margin-left: 10px;
   text-decoration: none;
 }
+.icons a:focus {
+  color: #fff;
+  outline: none;
+}
 .icons a:hover {
   color: #fff;
 }
@@ -90,16 +96,12 @@ header {
   height: 401px;
   background-color: #fff;
   padding-top: 72px;
+}
+.about_student .fixed_container {
+  height: 100%;
   display: block;
 }
-.about_student .about_student_inner {
-  margin: 0 auto;
-  width: 1200px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-.about_student .about_student_inner h3 {
+.about_student .fixed_container h3 {
   font-size: 42px;
   font-family: "Fira Sans", sans-serif;
   font-weight: 500;
@@ -107,7 +109,7 @@ header {
   line-height: 0.662;
   text-align: center;
 }
-.about_student .about_student_inner h4 {
+.about_student .fixed_container h4 {
   margin-top: 32px;
   font-size: 21px;
   font-family: "Fira Sans";
@@ -117,19 +119,26 @@ header {
   line-height: 1.325;
   text-align: center;
 }
+.about_student .fixed_container .cards {
+  display: flex;
+  padding: 32px 60px;
+}
 .student_card {
   display: flex;
   align-items: flex-start;
-  width: 600px;
+  width: 1200px / 2 - 50;
+  margin: 0 25px;
+  width: 440px;
 }
 .student_card img {
   width: 107px;
   height: 107px;
 }
 .student_card div {
-  margin-left: 16px;
+  margin: 0 32px;
 }
-.student_card div h4 {
+.student_card div h4.student_card_header {
+  margin-top: 0px;
   font-size: 21px;
   font-family: "Fira Sans";
   font-weight: 400;
