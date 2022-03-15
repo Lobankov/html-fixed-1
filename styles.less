@@ -22,9 +22,34 @@ body {
   margin: 0 auto;
 }
 
-.fixed_container {
+.outer_container {
   width: 1200px;
   margin: 0 auto;
+}
+
+.inner_container {
+  width: 940px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 42px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  color: rgb(33, 33, 33);
+  line-height: 0.662;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 32px;
+  font-size: 21px;
+  font-family: "Fira Sans";
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: rgb(114, 114, 114);
+  line-height: 1.325;
+  text-align: center;
 }
 
 header {
@@ -32,12 +57,12 @@ header {
   z-index: 1;
   background-color: rgb(140, 195, 75);
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
-}
 
-header .fixed_container {
-  height: 100%;
-  display: flex;
-  align-items: center;
+  .outer_container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .avatar {
@@ -62,7 +87,7 @@ header .fixed_container {
 .icons a {
   color: rgba(255, 255, 255, 0.702);
   margin-left: 10px;
-  text-decoration: none;    
+  text-decoration: none;
 }
 
 .icons a:focus {
@@ -97,33 +122,14 @@ header .fixed_container {
   background-color: #fff;
   padding-top: 72px;
 
-  .fixed_container {
+  .inner_container {
     height: 100%;
     display: block;
 
-    h3 {
-      font-size: 42px;
-      font-family: "Fira Sans", sans-serif;
-      font-weight: 500;
-      color: rgb(33, 33, 33);
-      line-height: 0.662;
-      text-align: center;
-    }
-
-    h4 {
-      margin-top: 32px;
-      font-size: 21px;
-      font-family: "Fira Sans";
-      font-weight: 300;
-      letter-spacing: -1px;
-      color: rgb(114, 114, 114);
-      line-height: 1.325;
-      text-align: center;
-    }
-
     .cards {
       display: flex;
-      padding: 32px 60px;
+      justify-content: space-between;
+      padding: 32px 0;
     }
   }
 }
@@ -131,21 +137,19 @@ header .fixed_container {
 .student_card {
   display: flex;
   align-items: flex-start;
-  width: @content_width / 2 - 50;
-  margin: 0 25px;
-  width: 440px;
+  // width: 440px;
   img {
-    width: 107px;
-    height: 107px;
+    width: 140px;
+    height: 140px;
   }
   div {
-    margin: 0 32px;
-    h4.student_card_header {
+    margin: 0 0 32px 32px;
+    width: 280px;
+    h3 {
       margin-top: 0px;
       font-size: 21px;
       font-family: "Fira Sans";
       font-weight: 400;
-      letter-spacing: -1px;
       color: #000;
       line-height: 1.325;
       text-align: left;
@@ -161,6 +165,50 @@ header .fixed_container {
     }
   }
 }
+
+.courses {
+  padding-top: 72px;
+  .courses_grid {
+    margin: 32px auto 64px auto;
+    width: 100%;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // align-content: flex-start;
+    // flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);      
+    grid-gap: 20px;
+
+    .course_card {   
+      height: 360px;         
+      text-align: center;
+      color: white;
+      vertical-align: middle;
+      background-color: red;
+
+      img {
+        width: 100%;
+      } 
+
+      .description {
+        background-color: purple;
+        color: aqua;
+      }
+      
+      .watched {
+        height: 100px;
+        background-color: #f6f7f2;
+      }      
+    }
+
+    .course_card:nth-child(3) {
+      background-color: olive;
+      height: 450px;
+    }
+  }
+}
+
 
 .clr {
   height: 72px;

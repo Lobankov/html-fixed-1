@@ -33,9 +33,31 @@ body {
   background-image: url("bg.png");
   margin: 0 auto;
 }
-.fixed_container {
+.outer_container {
   width: 1200px;
   margin: 0 auto;
+}
+.inner_container {
+  width: 940px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 42px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  color: #212121;
+  line-height: 0.662;
+  text-align: center;
+}
+h3 {
+  margin-top: 32px;
+  font-size: 21px;
+  font-family: "Fira Sans";
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: #727272;
+  line-height: 1.325;
+  text-align: center;
 }
 header {
   height: 90px;
@@ -43,7 +65,7 @@ header {
   background-color: #8cc34b;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
-header .fixed_container {
+header .outer_container {
   height: 100%;
   display: flex;
   align-items: center;
@@ -97,52 +119,32 @@ header .fixed_container {
   background-color: #fff;
   padding-top: 72px;
 }
-.about_student .fixed_container {
+.about_student .inner_container {
   height: 100%;
   display: block;
 }
-.about_student .fixed_container h3 {
-  font-size: 42px;
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 500;
-  color: #212121;
-  line-height: 0.662;
-  text-align: center;
-}
-.about_student .fixed_container h4 {
-  margin-top: 32px;
-  font-size: 21px;
-  font-family: "Fira Sans";
-  font-weight: 300;
-  letter-spacing: -1px;
-  color: #727272;
-  line-height: 1.325;
-  text-align: center;
-}
-.about_student .fixed_container .cards {
+.about_student .inner_container .cards {
   display: flex;
-  padding: 32px 60px;
+  justify-content: space-between;
+  padding: 32px 0;
 }
 .student_card {
   display: flex;
   align-items: flex-start;
-  width: 1200px / 2 - 50;
-  margin: 0 25px;
-  width: 440px;
 }
 .student_card img {
-  width: 107px;
-  height: 107px;
+  width: 140px;
+  height: 140px;
 }
 .student_card div {
-  margin: 0 32px;
+  margin: 0 0 32px 32px;
+  width: 280px;
 }
-.student_card div h4.student_card_header {
+.student_card div h3 {
   margin-top: 0px;
   font-size: 21px;
   font-family: "Fira Sans";
   font-weight: 400;
-  letter-spacing: -1px;
   color: #000;
   line-height: 1.325;
   text-align: left;
@@ -155,6 +157,38 @@ header .fixed_container {
   color: #727272;
   line-height: 1.5;
   text-align: left;
+}
+.courses {
+  padding-top: 72px;
+}
+.courses .courses_grid {
+  margin: 32px auto 64px auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+.courses .courses_grid .course_card {
+  height: 360px;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+  background-color: red;
+}
+.courses .courses_grid .course_card img {
+  width: 100%;
+}
+.courses .courses_grid .course_card .description {
+  background-color: purple;
+  color: aqua;
+}
+.courses .courses_grid .course_card .watched {
+  height: 100px;
+  background-color: #f6f7f2;
+}
+.courses .courses_grid .course_card:nth-child(3) {
+  background-color: olive;
+  height: 450px;
 }
 .clr {
   height: 72px;
