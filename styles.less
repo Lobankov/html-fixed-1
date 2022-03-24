@@ -180,8 +180,9 @@ header {
     grid-template-columns: repeat(3, 1fr);      
     grid-gap: 20px;
 
-    .course_card {   
-      height: 360px;         
+    .course-card {   
+      height: 360px;     
+      border-radius: 20px;    
       text-align: center;
       color: white;
       vertical-align: middle;
@@ -202,11 +203,23 @@ header {
       }      
     }
 
-    .course_card:nth-child(3) {
+    .course-card:nth-child(3) {
       background-color: olive;
       height: 450px;
     }
   }
+}
+
+.Rounded_Rectangle_1 {
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 130px;
+  top: 768px;
+  width: 300px;
+  height: 429px;
+  z-index: 65;
 }
 
 

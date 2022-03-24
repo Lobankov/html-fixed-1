@@ -5,7 +5,59 @@
     <meta charset="utf-8" />
     <title>1_test</title>
     <link rel="stylesheet" type="text/css" href="styles.css?version=51">
-    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css" </head>
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+
+    <script type="text/javascript">
+
+        function completeCourseCard(courseId) {
+
+            const element = document.getElementById(courseId)
+            const overlay = element.querySelector('.overlay');
+
+            overlay.style.display = 'block';
+
+            var highlightAnimation = overlay.animate([
+                { opacity: '0' },
+                { opacity: '0.2' },
+            ], {
+                duration: 200,
+                fill: 'forwards'
+            });
+
+            highlightAnimation.onfinish = (e) => {
+                var animation = element.animate([
+                    { opacity: '1' },
+                    { opacity: '0' }
+                ], {
+                    duration: 700,
+                    delay: 1000
+                });
+
+                animation.onfinish = (e) => {
+                    element.style.display = 'none';
+                    checkAllCoursesPassed();
+                };
+            };
+        }
+
+        function checkAllCoursesPassed() {
+
+            const grid = document.getElementById('courses-grid');
+            const children = grid.children;
+
+            const allHidden = Array.from(children).every(element => {
+                return element.style.display == 'none';
+            });
+
+            if (allHidden) {
+                const coursesDiv = document.getElementById('courses').style.display = 'none';
+                const finishedLabel = document.getElementById('finished').style.display = 'flex';
+            }
+        }
+
+    </script>
+
+</head>
 
 <body>
 
@@ -30,54 +82,171 @@
             <div class="inner_container">
                 <h2>О будущем ученике</h2>
                 <h3>Ребятам из Loftschool будет полезно узнать немного обо мне</h4>
-                <div class="cards">
-                    <section class="student_card">
-                        <img src="images/hello.png" alt="hello"></img>
-                        <div>
-                            <h3>Немного обо мне</h3>
-                            <p>Я живу в Санкт-Петербурге (Россия).
-                                Мне 26 лет. Высшее образование - закончил НИУ ИТМО.
-                                Опыт в разработке 1 год.
-                                Уже окончил курсы в Академии Программирования, где не плохо научился верстать.
-                                <br>Пока есть только один сайт, которым могу похвастаться:
-                                <a href="https://www.yandex.ru">www.yandex.ru</a>
-                            </p>
-                        </div>
-                    </section>
-                    <section class="student_card">
-                        <img src="images/experience.png" alt="exp"></img>
-                        <div>
-                            <h3>Мой опыт в разработке</h3>
-                            <p>В этом блоке я расскажу о себе, что я уже умею.
-                                Здесь я укажу другие курсы, которые до этого я уже проходил.
-                                Могу перечислить технологии, которыми уже умею пользоваться.
-                                К примеру: html5, css3, sass, jade, git и пр.</p>
-                        </div>
-                    </section>
-                </div>                
+                    <div class="cards">
+                        <section class="student_card">
+                            <img src="images/hello.png" alt="hello">
+                            <div>
+                                <h3>Немного обо мне</h3>
+                                <p>Я живу в Санкт-Петербурге (Россия).
+                                    Мне 26 лет. Высшее образование - закончил НИУ ИТМО.
+                                    Опыт в разработке 1 год.
+                                    Уже окончил курсы в Академии Программирования, где не плохо научился верстать.
+                                    <br>Пока есть только один сайт, которым могу похвастаться:
+                                    <a href="https://www.yandex.ru">www.yandex.ru</a>
+                                </p>
+                            </div>
+                        </section>
+                        <section class="student_card">
+                            <img src="images/experience.png" alt="exp">
+                            <div>
+                                <h3>Мой опыт в разработке</h3>
+                                <p>В этом блоке я расскажу о себе, что я уже умею.
+                                    Здесь я укажу другие курсы, которые до этого я уже проходил.
+                                    Могу перечислить технологии, которыми уже умею пользоваться.
+                                    К примеру: html5, css3, sass, jade, git и пр.</p>
+                            </div>
+                        </section>
+                    </div>
             </div>
         </div>
         <div class="courses">
-            <div class="inner_container">
+            <div id="finished">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <h2>Задание выполнено</h2>
+            </div>
+            <div class="inner_container" id="courses">
                 <h2>
                     Курсы на loftblog
                 </h2>
                 <h3>
                     которые мне помогут в выполнении этого задания
                 </h3>
-                <div class="courses_grid">
-                    <div class="course_card">
-                        <img src="images/js.png" alt="js"></img>
+                <div class="courses-grid" id="courses-grid">
+                    <div class="course-card" id="js">
+                        <img src="images/js.png" alt="js">
                         <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi officia earum iste asperiores perferendis impedit veritatis velit? Laboriosam ullam ipsa quo itaque, voluptatibus magni alias? Nulla perspiciatis exercitationem fuga et!
+                            <div class="hover-line"></div>
+                            <h3>Основы JavaScript</h3>
+                            <p>
+                                Видеокурс о одном из самых популярных языков программирования - JavaScript.
+                                Изучая этот курс вы познаете этот прекрасный язык от самых основ.
+                            </p>
+                            <div class="estimated-time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>24 урока (6 часов 46 минут)</span>
+                            </div>
                         </div>
-                        <div class="watched"></div>
+                        <div class="watched">
+                            <input type="checkbox" class="checkbox" id="watched-js" onchange="completeCourseCard('js')">
+                            <label for="watched-js">Посмотрел</label>
+                        </div>
+                        <div class="overlay"></div>
                     </div>
-                    <div class="course_card">2</div>
-                    <div class="course_card">3</div>
-                    <div class="course_card">4</div>
-                    <div class="course_card">5</div>
-                    <div class="course_card">6</div>
+                    <div class="course-card" id="jquery">
+                        <img src="images/jquery.png" alt="js">
+                        <div class="description">
+                            <div class="hover-line"></div>
+                            <h3>Основы JQUERY</h3>
+                            <p>
+                                Видеокурс о одном из самых популярных языков программирования - JavaScript.
+                                Изучая этот курс вы познаете этот прекрасный язык от самых основ.
+                            </p>
+                            <div class="estimated-time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>11 уроков (2 часа 6 минут)</span>
+                            </div>
+                        </div>
+                        <div class="watched">
+                            <input type="checkbox" class="checkbox" id="watched-jquery"
+                                onchange="completeCourseCard('jquery')">
+                            <label for="watched-jquery">Посмотрел</label>
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="course-card" id="base">
+                        <img src="images/base.png" alt="js">
+                        <div class="description">
+                            <div class="hover-line"></div>
+                            <h3>Базовые элементы страницы</h3>
+                            <p>
+                                Видеокурс по верстке и программированию основных и популярных элементов сайтов.
+                                Посмотрев этот курс вы научитесь создавать табы, аккордеон, слайдшоу, слайдер и т.д.
+                            </p>
+                            <div class="estimated-time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>9 уроков (2 часа 7 минут)</span>
+                            </div>
+                        </div>
+                        <div class="watched">
+                            <input type="checkbox" class="checkbox" id="watched-base"
+                                onchange="completeCourseCard('base')">
+                            <label for="watched-base">Посмотрел</label>
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="course-card" id="adaptive">
+                        <img src="images/adaptive.png" alt="js">
+                        <div class="description">
+                            <div class="hover-line"></div>
+                            <h3>Создание адаптивных сайтов</h3>
+                            <p>
+                                В этом курсе вы узнаете как создавать адаптивные сайты, что такое адаптивная верстка и
+                                дизайн.
+                            </p>
+                            <div class="estimated-time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>7 уроков (2 часа 11 минут)</span>
+                            </div>
+                        </div>
+                        <div class="watched">
+                            <input type="checkbox" class="checkbox" id="watched-adaptive"
+                                onchange="completeCourseCard('adaptive')">
+                            <label for="watched-adaptive">Посмотрел</label>
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="course-card" id="adaptive-css">
+                        <img src="images/adaptive-css.png" alt="js">
+                        <div class="description">
+                            <div class="hover-line"></div>
+                            <h3>Верстка адаптивной css галереи</h3>
+                            <p>
+                                В этом видеокурсе вы изучите инструменты, техники и подходы для web-разработчика,
+                                которые помогут вам решать поставленные задачи более быстро и эффективно.
+                            </p>
+                            <div class="estimated-time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>9 уроков (2 часа 7 минут)</span>
+                            </div>
+                        </div>
+                        <div class="watched">
+                            <input type="checkbox" class="checkbox" id="watched-css"
+                                onchange="completeCourseCard('adaptive-css')">
+                            <label for="watched-css">Посмотрел</label>
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="course-card" id="gallery">
+                        <img src="images/css-gallery.png" alt="js">
+                        <div class="description">
+                            <div class="hover-line"></div>
+                            <h3>Верстка адаптивной css галереи</h3>
+                            <p>
+                                В этом курсе мы разберем как сверстать адаптивную css галерею. Также познакомимся с
+                                Flexbox.
+                            </p>
+                            <div class="estimated-time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>4 урока (50 минут)</span>
+                            </div>
+                        </div>
+                        <div class="watched">
+                            <input type="checkbox" class="checkbox" id="watched-gallery"
+                                onclick="completeCourseCard('gallery')">
+                            <label for="watched-gallery">Посмотрел</label>
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +259,6 @@
             не зависимо от количества контента на странице и размера окна.
         </span>
     </footer>
-
 </body>
 
 </html>
